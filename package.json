@@ -1,0 +1,27 @@
+{
+  "name": "drdocker",
+  "version": "0.1.0",
+  "description": "Tophat and monocle for your DockerD. Docker.IO Node.JS library.",
+  "main": "index.js",
+  "dependencies": {
+    "rc": "~0.3.1"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.13.0",
+    "resumer": "0.0.0"
+  },
+  "keywords": [
+    "docker",
+    "docker.io"
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FrozenRidge/DrDocker.git"
+  },
+  "author": "Niall O'Higgins <niallo@frozenridge.co>",
+  "license": "BSD"
+}
