@@ -83,6 +83,17 @@ var kill = function(containerId, cb) {
   })
 }
 
+//  wait() - Wait for a docker container to stop then return exit code.
+//
+//  *containerId* - ID of container to wait for
+//  *cb* - function callback function(err) {}
+//
+var wait = function(containerId, cb) {
+  sh("docker wait " + containerId, function(err, stdout) {
+    cb(err, stdout.replace('\n', ''))
+  })
+}
+
 
 //  runInContainer() - Run a command in a container.
 //
@@ -97,7 +108,7 @@ var runInContainer = function(imageName, cmd, pipingToStdin, cb) {
   var stdout = ""
   var stderr = ""
   var cidFile = path.join("/tmp", "provisioning_" + process.pid.toString() + ".cid")
-  var proc = spawn("docker", ["run", "-cidfile", cidFile, "-t", "-i", "-a", "stdin", "-a", "stdout", "-a", "stderr",
+  var proc = spawn("docker", ["run", "-cidfile", cidFile, "-i", "-a", "stdin", "-a", "stdout", "-a", "stderr",
     imageName, '/bin/bash', '-c', cmd ])
 
   if (arguments.length === 3)  {
@@ -133,6 +144,7 @@ module.exports = {
   haveImage: haveImage,
   commit: commit,
   kill: kill,
-  runInContainer: runInContainer
+  runInContainer: runInContainer,
+  wait: wait
 }
 

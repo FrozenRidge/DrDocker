@@ -1,6 +1,6 @@
 {
   "name": "drdocker",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Tophat and monocle for your DockerD. Docker.IO Node.JS library.",
   "main": "index.js",
   "dependencies": {
